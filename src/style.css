@@ -1,0 +1,611 @@
+:root {
+  font-family:
+    Manrope,
+    Segoe UI,
+    sans-serif;
+  color: #f1efdc;
+  background: #102c25;
+  font-synthesis: none;
+}
+* {
+  box-sizing: border-box;
+}
+html,
+body,
+#root {
+  margin: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+canvas {
+  display: block;
+}
+.interface {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: linear-gradient(
+    90deg,
+    rgba(4, 17, 14, 0.94),
+    rgba(5, 21, 17, 0.67) 30%,
+    transparent 66%
+  );
+}
+button,
+input {
+  font: inherit;
+}
+button {
+  cursor: pointer;
+  color: inherit;
+  pointer-events: auto;
+  border: 0;
+  background: none;
+}
+button:focus-visible,
+input:focus-visible {
+  outline: 1px solid var(--accent);
+  outline-offset: 4px;
+}
+button:disabled {
+  opacity: 0.3;
+  cursor: default;
+}
+.topline {
+  position: absolute;
+  top: 32px;
+  left: 4%;
+  right: 4%;
+  display: flex;
+  justify-content: space-between;
+  font-size: 9px;
+  letter-spacing: 2.5px;
+  color: #b6c1ad;
+}
+.hero {
+  position: absolute;
+  top: 17%;
+  left: 8%;
+  width: 440px;
+}
+.eyebrow {
+  font-size: 9px;
+  letter-spacing: 2.4px;
+  font-weight: 700;
+  color: var(--accent);
+  display: block;
+}
+.eyebrow i {
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--accent);
+  margin-right: 9px;
+}
+h1 {
+  font:
+    600 clamp(64px, 6vw, 100px)/0.87 "Cormorant Garamond",
+    Georgia,
+    serif;
+  letter-spacing: 1px;
+  margin: 24px 0;
+  color: #e4d6aa;
+  text-shadow: 0 3px 20px #071812;
+}
+h1 span {
+  font:
+    500 13px/3 Manrope,
+    sans-serif;
+  letter-spacing: 8px;
+  display: block;
+  margin-top: 15px;
+  color: #c9bb91;
+}
+.hero > p {
+  font-size: 12px;
+  line-height: 1.9;
+  color: #a7b4a7;
+  margin: 6px 0 27px;
+}
+.panel nav {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.panel button {
+  display: flex;
+  align-items: center;
+  text-align: left;
+  padding: 12px 16px;
+  width: 100%;
+  border: 1px solid transparent;
+  transition:
+    background 0.2s,
+    border 0.2s,
+    transform 0.2s;
+  font-size: 12px;
+  letter-spacing: 0.4px;
+}
+.panel button.selected,
+.inventory button.selected {
+  border-color: #c7b27677;
+  background: linear-gradient(90deg, #a793532b, #a7935303);
+}
+.panel button.selected:before {
+  content: "";
+  height: 18px;
+  width: 2px;
+  background: var(--accent);
+  position: absolute;
+  left: 0;
+}
+.menu-index {
+  font-size: 8px;
+  color: #9d9d78;
+  width: 32px;
+}
+.panel button small {
+  display: block;
+  font-size: 9px;
+  color: #9fac9e;
+  margin-top: 5px;
+  font-weight: 400;
+}
+.arrow {
+  margin-left: auto;
+  color: var(--accent);
+  font-size: 18px;
+}
+.panel button:not(.selected) .arrow {
+  opacity: 0;
+}
+.realm-card {
+  position: absolute;
+  right: 5%;
+  bottom: 14%;
+  width: 270px;
+  padding: 23px 25px;
+  border: 1px solid #c2c6a43b;
+  background: #061b1666;
+  backdrop-filter: blur(10px);
+}
+h3 {
+  font:
+    500 27px "Cormorant Garamond",
+    Georgia,
+    serif;
+  margin: 8px 0;
+}
+.realm-card p {
+  font-size: 10px;
+  color: #b5c4b3;
+}
+.card-line {
+  height: 1px;
+  background: #adbc9b4d;
+  margin: 22px 0 14px;
+}
+.realm-card small {
+  font-size: 8px;
+  letter-spacing: 1px;
+  color: #c4cdb9;
+}
+.realm-card small span {
+  float: right;
+  font-size: 7px;
+}
+footer {
+  position: absolute;
+  bottom: 28px;
+  left: 4%;
+  right: 4%;
+  display: flex;
+  justify-content: space-between;
+  color: #8f9e8e;
+  font-size: 8px;
+  letter-spacing: 1.7px;
+}
+kbd {
+  font: inherit;
+  border: 1px solid #b7c6ab44;
+  padding: 3px 6px;
+  border-radius: 2px;
+  font-size: 9px;
+  color: #d7ddc7;
+}
+h2 {
+  font:
+    500 52px/1.03 "Cormorant Garamond",
+    Georgia,
+    serif;
+  margin: 14px 0 24px;
+  white-space: pre-line;
+}
+.secondary {
+  top: 16%;
+}
+.name {
+  font-size: 8px;
+  letter-spacing: 2px;
+  pointer-events: auto;
+  display: block;
+  margin-bottom: 20px;
+}
+.name input {
+  display: block;
+  background: #061d1688;
+  border: 1px solid #8fa68655;
+  color: #e7e7cf;
+  padding: 10px;
+  margin-top: 9px;
+  width: 100%;
+  font-size: 15px;
+}
+.panel .back {
+  margin-top: 20px;
+  font-size: 10px;
+  color: #aabb9f;
+}
+.modal-wrap {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #03100eb0;
+  backdrop-filter: blur(12px);
+  pointer-events: auto;
+}
+.modal {
+  width: 540px;
+  max-height: 90vh;
+  overflow-y: auto;
+  padding: 40px;
+  background: linear-gradient(140deg, #173128f5, #0b191af5);
+  border: 1px solid #c0bc8e55;
+  box-shadow: 0 25px 100px #0006;
+}
+.modal p {
+  font-size: 12px;
+  line-height: 1.9;
+  color: #b3c1b1;
+}
+.modal > button,
+.cinematic button {
+  padding: 13px 25px;
+  border: 1px solid #d7c39177;
+  margin: 12px 12px 0 0;
+  font-size: 11px;
+  letter-spacing: 1px;
+}
+.controls > div {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  font-size: 10px;
+  padding: 9px 0;
+  border-bottom: 1px solid #b7c6ab18;
+}
+.controls kbd {
+  min-width: 100px;
+}
+.cinematic {
+  position: absolute;
+  inset: 0;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: #061915c9;
+  pointer-events: auto;
+}
+.cinematic h2 {
+  font-size: 72px;
+  color: #e9dcb7;
+}
+.cinematic p {
+  font-size: 13px;
+  color: #b5c4b4;
+  line-height: 2;
+}
+.hud-top {
+  position: absolute;
+  top: 30px;
+  left: 30px;
+  right: 30px;
+  display: flex;
+  justify-content: space-between;
+}
+.vitals {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+.portrait {
+  font-size: 32px;
+  border: 1px solid #c1cfaa88;
+  width: 56px;
+  height: 64px;
+  display: grid;
+  place-items: center;
+  background: #0b211ac9;
+}
+.vitals > div:last-child {
+  width: 220px;
+}
+.player-name {
+  font-size: 12px;
+  margin-bottom: 8px;
+}
+.player-name span {
+  float: right;
+  font-size: 9px;
+  color: var(--accent);
+}
+.bar {
+  height: 7px;
+  background: #0009;
+  border: 1px solid #d5e0b33b;
+}
+.bar i {
+  display: block;
+  height: 100%;
+  background: linear-gradient(90deg, #6b9661, #b1d289);
+  transition: width 0.2s;
+}
+.vitals small {
+  font-size: 8px;
+  color: #b1bba9;
+  display: block;
+  margin-top: 6px;
+}
+.vitals small span {
+  float: right;
+}
+.xp {
+  height: 2px;
+  background: #fff2;
+  margin-top: 8px;
+}
+.xp i {
+  height: 100%;
+  display: block;
+  background: #d6ba75;
+}
+.location {
+  text-align: right;
+}
+.location h3 {
+  font-size: 30px;
+}
+.location small {
+  font-size: 9px;
+  letter-spacing: 2px;
+  color: var(--accent);
+}
+.quest {
+  position: absolute;
+  top: 145px;
+  left: 30px;
+  max-width: 310px;
+  border-left: 2px solid var(--accent);
+  padding: 4px 14px;
+  background: linear-gradient(90deg, #061b1888, transparent);
+}
+.quest p {
+  font-size: 12px;
+  line-height: 1.7;
+  margin: 10px 0;
+}
+.quest small {
+  font-size: 9px;
+  line-height: 1.8;
+  color: #bcc5b2;
+}
+.hud-bottom {
+  position: absolute;
+  bottom: 30px;
+  left: 30px;
+  right: 30px;
+  display: flex;
+  justify-content: space-between;
+  align-items: end;
+}
+.equipped h3 {
+  font-size: 25px;
+}
+.equipped small,
+.guide {
+  font-size: 9px;
+  color: #bac1ac;
+  line-height: 2.4;
+}
+.quickslots {
+  display: flex;
+  gap: 10px;
+}
+.quickslots > div {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  align-items: center;
+  width: 58px;
+  padding: 12px 5px;
+  background: #08221b99;
+  border: 1px solid #c9d6ab33;
+}
+.quickslots small {
+  font-size: 8px;
+  color: #c4cdb6;
+}
+.guide {
+  width: 120px;
+}
+.crosshair {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  color: #efedb6;
+}
+.toast {
+  position: absolute;
+  bottom: 155px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  padding: 16px 24px;
+  background: #0c241ded;
+  border: 1px solid #cfba6d66;
+  font-size: 12px;
+  animation: arrive 0.3s;
+}
+.toast span {
+  color: var(--accent);
+  font-size: 20px;
+}
+.bossbar {
+  position: absolute;
+  top: 130px;
+  left: 36%;
+  width: 35%;
+  text-align: center;
+}
+.bossbar > span {
+  font-size: 10px;
+  letter-spacing: 2px;
+}
+.bossbar .bar {
+  margin: 12px 0;
+}
+.bossbar .bar i {
+  background: linear-gradient(90deg, #8c526b, #e0a975);
+}
+.bossbar small {
+  font-size: 9px;
+}
+.inventory {
+  width: 650px;
+}
+.inventory h2 small {
+  font-size: 23px;
+}
+.inventory-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 7px;
+}
+.inventory-grid button {
+  border: 1px solid #b5c8a233;
+  text-align: left;
+  padding: 13px;
+  font-size: 10px;
+}
+.inventory-grid small {
+  display: block;
+  color: #a5b99b;
+  font-size: 9px;
+  margin-top: 7px;
+}
+.muted {
+  color: #a8b59f;
+  font-size: 11px;
+}
+.transition {
+  position: absolute;
+  inset: 0;
+  background: #b2ffe7;
+  animation: fade 1.2s forwards;
+  pointer-events: none;
+}
+.loading {
+  position: absolute;
+  inset: 0;
+  background: #092017;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  letter-spacing: 4px;
+}
+.sigil {
+  font-size: 60px;
+  color: #d2bc7f;
+}
+@keyframes fade {
+  to {
+    opacity: 0;
+  }
+}
+@keyframes arrive {
+  from {
+    opacity: 0;
+    margin-bottom: -10px;
+  }
+  to {
+    opacity: 1;
+    margin-bottom: 0;
+  }
+}
+@media (max-height: 800px) {
+  .hero {
+    top: 13%;
+  }
+  h1 {
+    font-size: 72px;
+  }
+  .panel button {
+    padding: 9px 14px;
+  }
+  .hero > p {
+    margin-bottom: 16px;
+  }
+  .topline {
+    top: 22px;
+  }
+  .secondary h2 {
+    font-size: 42px;
+  }
+  .modal {
+    padding: 25px;
+  }
+  .cinematic h2 {
+    font-size: 56px;
+  }
+}
+@media (max-width: 900px) {
+  .hero {
+    left: 5%;
+    width: 340px;
+  }
+  .realm-card {
+    width: 220px;
+    right: 4%;
+  }
+  .topline span:last-child,
+  footer span:last-child {
+    display: none;
+  }
+  .quickslots {
+    gap: 3px;
+  }
+  .quickslots > div {
+    width: 48px;
+  }
+  .location h3 {
+    font-size: 22px;
+  }
+  .quest {
+    max-width: 230px;
+  }
+  .equipped h3 {
+    font-size: 19px;
+  }
+  .guide {
+    display: none;
+  }
+}
