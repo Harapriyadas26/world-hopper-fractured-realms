@@ -1,54 +1,158 @@
 # World Hopper: Fractured Realms
 
-An original browser-based, keyboard-controlled 3D adventure prototype. Four connected realms, twelve shards, seal puzzles, four weapons, leveling, consumables, checkpoints, local saves, a three-stage Guardian encounter and core-restoration ending.
+<p align="center">
+  <img src="tests/screenshots/title.png" alt="World Hopper: Fractured Realms title screen" width="100%" />
+</p>
 
-## Run
+<p align="center">
+  <strong>Travel across shattered dimensions. Recover the World Shards. Restore reality.</strong>
+</p>
 
-Requires Node.js 22.12+ (developed on Node 24).
+<p align="center">
+  <img alt="React" src="https://img.shields.io/badge/React-19-61DAFB?logo=react&logoColor=white" />
+  <img alt="TypeScript" src="https://img.shields.io/badge/TypeScript-5-3178C6?logo=typescript&logoColor=white" />
+  <img alt="Three.js" src="https://img.shields.io/badge/Three.js-3D-000000?logo=threedotjs&logoColor=white" />
+  <img alt="Vite" src="https://img.shields.io/badge/Vite-7-646CFF?logo=vite&logoColor=white" />
+</p>
 
-```sh
+## About the game
+
+**World Hopper: Fractured Realms** is a browser-based third-person 3D action-adventure. Reality has shattered into four connected dimensions, and the World Guardian has seized the World Core. As a World Hopper, the player must explore each realm, recover twelve World Shards, solve ancient mechanisms, unlock powerful weapons and abilities, and defeat the Guardian before the worlds collapse into one.
+
+The game is fully playable with a keyboard and runs directly in a modern desktop browser—no account, backend, mouse controls, or installation beyond the local development setup is required.
+
+> **Achievement:** Awarded **3rd place** at the **Build a Multiplayer Game** event presented by the OpenAI Student Collective at Alliance University on 29 October 2026.
+
+## Explore four fractured realms
+
+| Realm | Experience | Weapon unlocked |
+| --- | --- | --- |
+| **Ancient Jungle Temple** | Cross a suspension bridge, explore overgrown ruins, recover shards, and awaken ancient seals. | Ancient Crystal Sword |
+| **Cyber City** | Navigate a neon skyline, moving platforms, security systems, and energy hazards. | Plasma Blaster |
+| **Volcano Realm** | Survive lava, eruptions, obsidian ruins, and fiery enemies. | Lava Hammer |
+| **World Collision** | Shift reality through a world where jungle, technology, and volcanic energy have merged. | Reality Blade |
+
+<p align="center">
+  <img src="tests/screenshots/atmosphere-1.png" alt="Ancient Jungle Temple" width="49%" />
+  <img src="tests/screenshots/atmosphere-2.png" alt="Cyber City" width="49%" />
+</p>
+<p align="center">
+  <img src="tests/screenshots/atmosphere-3.png" alt="Volcano Realm" width="49%" />
+  <img src="tests/screenshots/atmosphere-4.png" alt="World Collision" width="49%" />
+</p>
+
+## Features
+
+- Four connected, visually distinct 3D realms
+- Twelve collectible World Shards and realm progression gates
+- Keyboard-controlled movement, camera, jumping, sprinting, and dashing
+- Light and heavy combat with four unlockable weapons
+- Enemy encounters, hazards, checkpoints, lives, and respawning
+- XP progression with double jump, shield, dash, and ultimate abilities
+- Health, shield, speed, damage, and life-restoring consumables
+- Keyboard-navigable inventory, pause menu, settings, and character selection
+- Versioned local save system with **Continue Adventure** support
+- Reality Shift puzzle mechanic in the final realm
+- Three-stage World Guardian encounter and a complete victory sequence
+
+## Controls
+
+| Key | Action |
+| --- | --- |
+| `W` `A` `S` `D` | Move |
+| Arrow keys | Rotate the camera and adjust its height |
+| `Space` | Jump / double jump after unlocking it |
+| `Left Shift` | Sprint |
+| `Left Ctrl` | Dash |
+| `J` / `K` | Light attack / heavy attack |
+| `1`–`4` | Equip an unlocked weapon |
+| `Q` | Energy Shield |
+| `R` | Ultimate Reality Strike |
+| `T` | Reality Shift in the final realm |
+| `E` / `F` | Interact / collect |
+| `H` | Use a health potion |
+| `Tab` | Open or close inventory |
+| `Esc` | Pause / back |
+| `Enter` | Confirm a menu selection |
+
+Menus and inventory are navigated using the arrow keys and `Enter`.
+
+## Getting started
+
+### Requirements
+
+- [Node.js](https://nodejs.org/) 22.12 or later
+- A modern desktop browser with WebGL and hardware acceleration enabled
+
+### Run locally
+
+```bash
+git clone https://github.com/Harapriyadas26/world-hopper-fractured-realms.git
+cd world-hopper-fractured-realms
 npm ci
 npm run dev
 ```
 
-Open the local Vite URL. Use a desktop browser with WebGL / hardware acceleration enabled. No account, backend, pointer lock or mouse is required.
+Open the local URL printed by Vite, normally [http://localhost:5173](http://localhost:5173).
 
-```sh
+### Build and test
+
+```bash
 npm test
 npx playwright install chromium
 npx playwright test
 npm run build
 ```
 
-Vitest covers game-state rules. Playwright covers real keyboard input and render initialization; the second browser test uses encounter-placement fixtures to check later-realm interactions without repeatedly walking the entire route. It is not a complete human playthrough or a difficulty certification. Screenshots are in `tests/screenshots/`.
+The production build is generated in `dist/`.
 
-## Controls
+## How to complete the adventure
 
-WASD move · arrows rotate camera (up/down adjust height) · Space jump · Shift sprint · Left Ctrl dash · J light / K heavy · 1–4 equip · Q shield · R ultimate · T Reality Shift · E interact · F collect · H health potion · Tab inventory · Esc pause/back · Enter confirm.
+In each of the first three realms, collect four floating World Shards, activate both glowing seals, awaken the central altar, and enter the newly opened portal. Explore away from the main path to discover treasure caches and consumables.
 
-Menus: Up/Down select and Enter confirm. Character name can be reached with Tab and edited normally. Inventory: Up/Down and Enter. Settings cycle via Enter. Camera rotation changes movement orientation.
+In World Collision, use Reality Shift with `T` to reveal the final route and activate its fractured mechanisms. Defeat the World Guardian, approach the restored World Core, and interact with it to complete the adventure.
 
-## Adventure route
+## Technology
 
-Each of the first three realms has four green/cyan/orange floating shards. Approach and press F. The two ringed seals at (-9,-17) and (9,-29) require E, then the altar at (0,-35). Four shards plus the altar open the northern portal at (0,-49). A western treasure cache at (-14,-12) provides three health potions plus the five other consumables. Each realm entry and completed altar is a checkpoint. Crossing the river cut requires the central bridge; Cyber's platform moves. The final bridge requires T. Final seals must also be activated while shifted. Once the altar awakens the Guardian, dodge the warning ring and strike during recovery. After defeating it, approach the floating Core and press E.
+- **React 19** and **TypeScript** for the application and UI
+- **Three.js**, **React Three Fiber**, and **Drei** for 3D rendering
+- **Rapier** for physics and character collisions
+- **Zustand** for game state and persistence
+- **Vite** for development and production bundling
+- **Vitest** and **Playwright** for game-logic and browser testing
 
-A health potion restores 40 HP. Mega heals fully; shield reduces damage 70%; speed/damage last 15 seconds; life crystals restore a lost life to a cap of 3. Ineffective health/life use keeps the item. Inventory is capped at 9 each. Progress saves after milestones and periodically. Continue restores at the saved checkpoint, not the exact walking position. Exhausted lives and completed victories clear that adventure. Starting a new adventure replaces the save after confirming Begin Adventure.
+## Project structure
 
-## Architecture
+```text
+src/
+├── game/
+│   ├── Actors.tsx       # Player input, movement, combat, enemies and boss
+│   ├── Crossing.tsx     # Realm bridges and shifting platforms
+│   ├── Hopper.tsx       # Procedural player and weapon models
+│   ├── World.tsx        # Realm environments and interactables
+│   ├── config.ts        # Realm, weapon and progression configuration
+│   ├── materials.ts     # Generated materials and textures
+│   └── store.ts         # Game rules, inventory, progression and saves
+├── main.tsx             # Scene composition and UI
+└── style.css            # Interface styling
+```
 
-- `src/game/config.ts`: realm palettes, placements, weapons and XP thresholds.
-- `src/game/store.ts`: versioned persistence and game rules.
-- `src/game/Actors.tsx`: input, movement, combat, hazards and Guardian.
-- `src/game/World.tsx`: original procedural scenery and interactables.
-- `src/game/Crossing.tsx`: physical bridges and moving/reality platform.
-- `src/game/Hopper.tsx`: articulated procedural character and weapon geometry.
-- `src/game/materials.ts`: locally generated stone texture.
-- `src/main.tsx`, `src/style.css`: scene composition and keyboard UI.
+## Development status
 
-## Deploy
+The complete critical path—from character selection to restoring the World Core—is implemented and tested. This is an evolving prototype, with future work focused on richer character animation, more varied enemy behavior, expanded sound design, camera collision, environment detail, performance optimization, and encounter balancing.
 
-Run `npm ci && npm run build`, then publish the **contents of `dist/`** with any HTTPS static host. No API keys or backend required. On Netlify use build `npm run build` and publish directory `dist`; on Vercel choose Vite and output `dist`. No deployment has been performed. WebAssembly must be served correctly (`application/wasm` for separate wasm assets). The Rapier runtime is bundled. All game assets are local or generated; no runtime asset hotlinks are used.
+Detailed implementation and verification notes are available in [IMPLEMENTATION_REPORT.md](IMPLEMENTATION_REPORT.md). Asset and license information is recorded in [ASSET_CREDITS.md](ASSET_CREDITS.md).
 
-## Scope
+## Deployment
 
-This is a functional prototype, **not the completed premium game in the master specification**. See `IMPLEMENTATION_REPORT.md` for verified results and specific missing requirements. Art, animations, combat variety, environmental design, audio and encounter balance need substantial production work before a release.
+Create the production build with `npm run build`, then deploy the contents of `dist/` to any HTTPS static host. For Netlify, use `npm run build` as the build command and `dist` as the publish directory. For Vercel, select the Vite preset and use `dist` as the output directory.
+
+## Recognition
+
+World Hopper: Fractured Realms was created for the **Build a Multiplayer Game** event hosted at Alliance University, Bengaluru, and received **3rd place**. The project reflects rapid prototyping, creative game design, browser-based 3D development, and end-to-end implementation under a limited build timeframe.
+
+---
+
+<p align="center">
+  Built with imagination, persistence, and a love for interactive worlds.
+</p>
